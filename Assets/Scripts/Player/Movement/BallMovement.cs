@@ -7,18 +7,31 @@ namespace RollingBall.Player.Movement
     public class BallMovement : MonoBehaviour
     {
         [Header("Input Settings")] 
-        [SerializeField] private PlayerInputActions inputHandler;
+        [SerializeField] private PlayerInputHandler inputHandler;
 
         [Header("Movement Settings"), Space]
         [SerializeField] private float standardSpeed = 30f;
         [SerializeField] private float increasedSpeed = 30f;
         [Space]
         [SerializeField] private float drag = 1.5f;
+        [Space]
+        [SerializeField] private bool shouldMoveRelativeToCamera = true;
 
+        private Transform _cameraTransform;
         private Rigidbody _rigidbody;
         private Vector3 _targetHorizontalVelocity;
 
-        private void Awake() => InitializeRigidbody();
+        private void Awake()
+        {
+            InitializeCamera();
+            InitializeRigidbody();
+        }
+
+        private void InitializeCamera()
+        {
+            _cameraTransform = UnityEngine.Camera.main.transform;
+        }
+        
         private void InitializeRigidbody()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -31,7 +44,14 @@ namespace RollingBall.Player.Movement
             var movementInput = inputHandler.MovementValue.normalized;
             var speed = inputHandler.SprintValue ? increasedSpeed : standardSpeed;
 
-            _targetHorizontalVelocity = new Vector3(movementInput.x, 0f, movementInput.y) * speed * Time.deltaTime;
+            var horizontalMovement = new Vector3(movementInput.x, 0f, movementInput.y);
+            if (shouldMoveRelativeToCamera)
+            {
+                horizontalMovement = _cameraTransform.TransformVector(horizontalMovement).normalized;
+                horizontalMovement.y = 0f;
+            }
+
+            _targetHorizontalVelocity = horizontalMovement * speed * Time.deltaTime;
         }
 
         private void FixedUpdate()

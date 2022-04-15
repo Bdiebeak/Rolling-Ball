@@ -9,7 +9,7 @@ namespace RollingBall.Player.Input
 	/// This class handles input and write it to properties.
 	/// </summary>
 	[RequireComponent(typeof(PlayerInput))]
-	public class PlayerActionsReader : PlayerInputActions
+	public class PlayerInputActionsReader : PlayerInputHandler
 	{
 		private PlayerInput _playerInput;
 		private Dictionary<PlayerActions, InputAction> _inputActions;

@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Bdiebeak.TPC.Camera
+namespace RollingBall.Player.Camera
 {
     public class CursorBlocker : MonoBehaviour
     {

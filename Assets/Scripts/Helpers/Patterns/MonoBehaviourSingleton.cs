@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace RollingBall.Helpers
+namespace RollingBall.Helpers.Patterns
 {
     /// <summary>
     /// This is a helper class which could be used for automatically configure a singleton class.

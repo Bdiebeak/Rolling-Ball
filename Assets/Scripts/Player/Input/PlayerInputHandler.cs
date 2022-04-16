@@ -1,4 +1,4 @@
-using RollingBall.Helpers;
+using RollingBall.Helpers.Patterns;
 using UnityEngine;
 
 namespace RollingBall.Player.Input

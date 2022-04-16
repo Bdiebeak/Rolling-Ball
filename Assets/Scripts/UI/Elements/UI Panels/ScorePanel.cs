@@ -16,11 +16,14 @@ namespace RollingBall.UI
             _repository = new ScoreRepository(new ScorePlayerPrefsProvider());
 
             var allScores = _repository.GetAll().ToList();
-            var highestScore = allScores.OrderByDescending(x => x.Score).First();
             var orderedScores = allScores.OrderByDescending(x => x.DateTime);
-            
-            _highestScoreFiller.UpdateText(highestScore);
             _scoreDataLayoutGroup.RefillLayoutGroup(orderedScores);
+            
+            if (allScores.Count != 0)
+            {
+                var highestScore = allScores.OrderByDescending(x => x.Score).First();
+                _highestScoreFiller.UpdateText(highestScore);
+            }
         }
     }
 }

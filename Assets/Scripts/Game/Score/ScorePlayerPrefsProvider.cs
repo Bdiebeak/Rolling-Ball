@@ -26,7 +26,6 @@ namespace RollingBall.Game.Score
                 loadedScore.Add(new ScoreData(savedScore, Convert.ToDateTime(savedDateTime)));
             }
 
-            loadedScore.Reverse();
             return loadedScore;
         }
 

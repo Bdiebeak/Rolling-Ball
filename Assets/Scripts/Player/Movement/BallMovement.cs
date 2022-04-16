@@ -43,9 +43,11 @@ namespace RollingBall.Player.Movement
             var speed = PlayerInputHandler.Instance.SprintValue ? increasedSpeed : standardSpeed;
 
             var horizontalMovement = new Vector3(movementInput.x, 0f, movementInput.y);
-            if (shouldMoveRelativeToCamera) // ToDo: fix low velocity when camera is in highest position
+            
+            // ToDo: velocity shouldn't be lower when camera is in highest position
+            if (shouldMoveRelativeToCamera) 
             {
-                horizontalMovement = _cameraTransform.TransformVector(horizontalMovement).normalized;
+                horizontalMovement = _cameraTransform.TransformDirection(horizontalMovement).normalized;
                 horizontalMovement.y = 0f;
             }
 

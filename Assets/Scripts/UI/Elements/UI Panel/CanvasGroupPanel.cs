@@ -7,12 +7,10 @@ namespace RollingBall.UI
     {
         private CanvasGroup _canvasGroup;
 
-        private void Awake() => InitializeCanvasGroup();
-        private void InitializeCanvasGroup()
-        {
-            _canvasGroup = GetComponent<CanvasGroup>();
-        }
+        private void OnValidate() => CacheRequiredComponents();
+        private void CacheRequiredComponents() => _canvasGroup = GetComponent<CanvasGroup>();
 
+        [ContextMenu("Activate")]
         public void ActivateCanvasGroup()
         {
             _canvasGroup.alpha = 1;
@@ -20,6 +18,7 @@ namespace RollingBall.UI
             _canvasGroup.blocksRaycasts = true;
         }
 
+        [ContextMenu("Deactivate")]
         public void DeactivateCanvasGroup()
         {
             _canvasGroup.alpha = 0;

@@ -6,9 +6,8 @@ namespace RollingBall.Player.Movement
     [RequireComponent(typeof(Rigidbody))]
     public class BallMovement : MonoBehaviour
     {
-        [Header("Movement Settings"), Space]
-        [SerializeField] private float standardSpeed = 30f;
-        [SerializeField] private float increasedSpeed = 30f;
+        [SerializeField] private float standardSpeed = 1f;
+        [SerializeField] private float increasedSpeed = 2f;
         [Space]
         [SerializeField] private float drag = 1.5f;
         [Space]
@@ -36,23 +35,24 @@ namespace RollingBall.Player.Movement
             _rigidbody.drag = drag;
         }
 
-        private void Update() => RecalculateVelocityByInput();
-        private void RecalculateVelocityByInput()
+        private void Update() => RecalculateTargetVelocity();
+        private void RecalculateTargetVelocity()
         {
             var movementInput = PlayerInputHandler.Instance.MovementValue.normalized;
             var speed = PlayerInputHandler.Instance.SprintValue ? increasedSpeed : standardSpeed;
 
             var horizontalMovement = new Vector3(movementInput.x, 0f, movementInput.y);
-            if (movementInput.magnitude > 0 && shouldMoveRelativeToCamera) 
+            if (movementInput != Vector2.zero && shouldMoveRelativeToCamera) 
             {
                 var cameraRotation = _cameraTransform.eulerAngles.y;
                 horizontalMovement = Quaternion.Euler(0f, cameraRotation, 0f) * horizontalMovement;
             }
 
-            _targetHorizontalVelocity = horizontalMovement * speed * Time.deltaTime;
+            _targetHorizontalVelocity = horizontalMovement * speed;
         }
 
-        private void FixedUpdate()
+        private void FixedUpdate() => UpdateVelocity();
+        private void UpdateVelocity()
         {
             _rigidbody.AddForce(_targetHorizontalVelocity, ForceMode.VelocityChange);
         }

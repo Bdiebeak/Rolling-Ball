@@ -38,5 +38,17 @@ namespace RollingBall.Player.Input
 			LookValue = _inputActions[PlayerActions.Look].ReadValue<Vector2>();
 			SprintValue = _inputActions[PlayerActions.Sprint].inProgress;
 		}
+		
+		public override void BlockInput()
+		{
+			_inputActions[PlayerActions.Movement].Disable();
+			_inputActions[PlayerActions.Look].Disable();
+		}
+		
+		public override  void UnblockInput()
+		{
+			_inputActions[PlayerActions.Movement].Enable();
+			_inputActions[PlayerActions.Look].Enable();
+		}
 	}
 }

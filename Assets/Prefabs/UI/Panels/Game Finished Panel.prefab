@@ -627,7 +627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3740351758602464201}
   - component: {fileID: 3740351758602464203}
-  - component: {fileID: 3740351758602464200}
+  - component: {fileID: 3740351756964258755}
   m_Layer: 5
   m_Name: Game Finished Panel
   m_TagString: Untagged
@@ -671,7 +671,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3740351758602464200
+--- !u!114 &3740351756964258755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -680,7 +680,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3740351758602464198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b84388a0aad8f54ba24f33b0d6469b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 41009922458c4224b1bfd8244a51084d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
+  scoreText: {fileID: 3740351757691453334}

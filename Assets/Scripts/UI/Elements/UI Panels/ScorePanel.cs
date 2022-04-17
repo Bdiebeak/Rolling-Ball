@@ -6,8 +6,9 @@ namespace RollingBall.UI
 {
     public class ScorePanel : CanvasGroupPanel
     {
-        [SerializeField] private ScoreDataFiller _highestScoreFiller;
-        [SerializeField] private ScoreDataLayoutGroup _scoreDataLayoutGroup;
+        [Space]
+        [SerializeField] private ScoreDataFiller highestScoreFiller;
+        [SerializeField] private ScoreDataLayoutGroup scoreDataLayoutGroup;
         
         private IScoreRepository _repository;
 
@@ -17,12 +18,12 @@ namespace RollingBall.UI
 
             var allScores = _repository.GetAll().ToList();
             var orderedScores = allScores.OrderByDescending(x => x.DateTime);
-            _scoreDataLayoutGroup.RefillLayoutGroup(orderedScores);
+            scoreDataLayoutGroup.RefillLayoutGroup(orderedScores);
             
             if (allScores.Count != 0)
             {
                 var highestScore = allScores.OrderByDescending(x => x.Score).First();
-                _highestScoreFiller.UpdateText(highestScore);
+                highestScoreFiller.UpdateText(highestScore);
             }
         }
     }

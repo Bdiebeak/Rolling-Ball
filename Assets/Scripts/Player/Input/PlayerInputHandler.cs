@@ -12,6 +12,8 @@ namespace RollingBall.Player.Input
 		public Vector2 MovementValue { get; protected set; }
 		public Vector2 LookValue { get; protected set; }
 		public bool SprintValue { get; protected set; }
+		public bool RestartLevel { get; protected set; }
+		public bool ReturnToMainMenu { get; protected set; }
 
 		public abstract void BlockInput();
 		public abstract void UnblockInput();

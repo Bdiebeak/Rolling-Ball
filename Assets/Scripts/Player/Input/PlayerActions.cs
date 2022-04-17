@@ -9,5 +9,7 @@ namespace RollingBall.Player.Input
         Movement,
         Look,
         Sprint,
+        RestartLevel,
+        ReturnToMainMenu,
     }
 }

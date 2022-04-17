@@ -39,7 +39,7 @@ namespace RollingBall.UI
             infoPanel.deactivated -= ShowButtonsPanel;
         }
 
-        private void StartButtonClickHandler() => ScenesLoader.Load(Scenes.Level);
+        private void StartButtonClickHandler() => SceneLoader.Load(Scenes.Level);
         private void RecordsButtonClickHandler()
         {
             recordsPanel.ActivateCanvasGroup();

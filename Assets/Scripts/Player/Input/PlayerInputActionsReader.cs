@@ -37,6 +37,8 @@ namespace RollingBall.Player.Input
 			MovementValue = _inputActions[PlayerActions.Movement].ReadValue<Vector2>();
 			LookValue = _inputActions[PlayerActions.Look].ReadValue<Vector2>();
 			SprintValue = _inputActions[PlayerActions.Sprint].inProgress;
+			RestartLevel = _inputActions[PlayerActions.RestartLevel].WasPressedThisFrame();
+			ReturnToMainMenu = _inputActions[PlayerActions.ReturnToMainMenu].WasPressedThisFrame();
 		}
 		
 		public override void BlockInput()

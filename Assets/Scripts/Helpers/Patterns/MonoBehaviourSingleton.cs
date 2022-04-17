@@ -17,7 +17,7 @@ namespace RollingBall.Helpers.Patterns
         {
             if (Instance != null && Instance != this)
             {
-                Debug.LogWarning($"Trying to assigning a singleton twice: {typeof(T).Name}.");
+                Debug.LogWarning($"Trying to assigning a singleton twice: {typeof(T).Name}. {gameObject.name} was destroyed.");
                 Destroy(gameObject);
             }
             else Instance = GetComponent<T>();

@@ -1,5 +1,5 @@
 using System.Linq;
-using RollingBall.Game.Score;
+using RollingBall.Helpers;
 using UnityEngine;
 
 namespace RollingBall.UI
@@ -9,15 +9,10 @@ namespace RollingBall.UI
         [Space]
         [SerializeField] private ScoreDataFiller highestScoreFiller;
         [SerializeField] private ScoreDataLayoutGroup scoreDataLayoutGroup;
-        
-        // ToDo: unity of work may be?
-        private IScoreRepository _repository;
 
         private void Start()
         {
-            _repository = new ScoreRepository(new ScorePlayerPrefsProvider());
-
-            var allScores = _repository.GetAll().ToList();
+            var allScores = UnitOfWork.Instance.ScoreRepository.GetAll().ToList();
             var orderedScores = allScores.OrderByDescending(x => x.DateTime);
             scoreDataLayoutGroup.RefillLayoutGroup(orderedScores);
             

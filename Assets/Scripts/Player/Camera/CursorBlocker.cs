@@ -4,7 +4,6 @@ namespace RollingBall.Player.Camera
 {
     public class CursorBlocker : MonoBehaviour
     {
-        [Header("Settings")] 
         [SerializeField] private bool shouldBlockCursor;
         [SerializeField] private bool shouldHideCursor;
 

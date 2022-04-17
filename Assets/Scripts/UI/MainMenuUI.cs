@@ -4,23 +4,54 @@ using UnityEngine.UI;
 
 namespace RollingBall.UI
 {
+    /// <summary>
+    /// Something like Mediator for MainMenu.
+    /// </summary>
     public class MainMenuUI : MonoBehaviour
     {
         [SerializeField] private Button startButton;
-
-        private void OnEnable()
+        [SerializeField] private Button recordsButton;
+        [SerializeField] private Button infoButton;
+        [Space] 
+        [SerializeField] private CanvasGroupPanel buttonsPanel;
+        [SerializeField] private CanvasGroupPanel recordsPanel;
+        [SerializeField] private CanvasGroupPanel infoPanel;
+        
+        private void OnEnable() => SubscribeOnRequiredEvents();
+        private void SubscribeOnRequiredEvents()
         {
             startButton.onClick.AddListener(StartButtonClickHandler);
-        }
-        
-        private void OnDisable()
-        {
-            startButton.onClick.RemoveListener(StartButtonClickHandler);
+            recordsButton.onClick.AddListener(RecordsButtonClickHandler);
+            infoButton.onClick.AddListener(InfoButtonClickHandler);
+
+            recordsPanel.deactivated += ShowButtonsPanel;
+            infoPanel.deactivated += ShowButtonsPanel;
         }
 
-        private void StartButtonClickHandler()
+        private void OnDisable() => UnsubscribeOnRequiredEvents();
+        private void UnsubscribeOnRequiredEvents()
         {
-            ScenesLoader.Load(Scenes.Level);
+            startButton.onClick.RemoveListener(StartButtonClickHandler);
+            recordsButton.onClick.RemoveListener(RecordsButtonClickHandler);
+            infoButton.onClick.RemoveListener(InfoButtonClickHandler);
+
+            recordsPanel.deactivated -= ShowButtonsPanel;
+            infoPanel.deactivated -= ShowButtonsPanel;
         }
+
+        private void StartButtonClickHandler() => ScenesLoader.Load(Scenes.Level);
+        private void RecordsButtonClickHandler()
+        {
+            recordsPanel.ActivateCanvasGroup();
+            buttonsPanel.DeactivateCanvasGroup();
+        }
+
+        private void InfoButtonClickHandler()
+        {
+            infoPanel.ActivateCanvasGroup();
+            buttonsPanel.DeactivateCanvasGroup();
+        }
+
+        private void ShowButtonsPanel() => buttonsPanel.ActivateCanvasGroup();
     }
 }

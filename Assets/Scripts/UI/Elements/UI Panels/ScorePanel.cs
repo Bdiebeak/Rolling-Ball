@@ -18,7 +18,7 @@ namespace RollingBall.UI
             
             if (allScores.Count != 0)
             {
-                var highestScore = allScores.OrderByDescending(x => x.Score).First();
+                var highestScore = allScores.OrderBy(x => x.Score).First();
                 highestScoreFiller.UpdateText(highestScore);
             }
         }

@@ -37,6 +37,7 @@ namespace RollingBall.Game.Logic
         private void OnStartHandler(GameObject enteredObject)
         {
             scoreCounter.StartCount();
+            startHandler.gameObject.SetActive(false);
 
             currentScorePanel.scoreCounter = scoreCounter;
             currentScorePanel.ActivateCanvasGroup();

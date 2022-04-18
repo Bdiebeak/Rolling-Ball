@@ -48,6 +48,7 @@ namespace RollingBall.Game.Logic
         {
             scoreCounter.StopCount();
             gameOverHandler.gameObject.SetActive(false);
+            finishHandler.gameObject.SetActive(false);
             
             finishPanel.ChangeScoreText(scoreCounter.CurrentScore);
             finishPanel.ActivateCanvasGroup();

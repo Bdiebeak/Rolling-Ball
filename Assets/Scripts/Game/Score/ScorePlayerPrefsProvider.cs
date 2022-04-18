@@ -7,8 +7,6 @@ namespace RollingBall.Game.Score
 {
     public class ScorePlayerPrefsProvider : IScoreDataProvider
     {
-        private const int MaxSavesNumber = 100;
-
         private const string CountKey = "Count";
         private const string ScoreKey = "Score";
         private const string DateTimeKey = "DateTime";
@@ -16,7 +14,6 @@ namespace RollingBall.Game.Score
         public IEnumerable<ScoreData> Load()
         {
             var loadedScore = new List<ScoreData>();
-
             var savedCount = PlayerPrefs.GetInt(CountKey);
             for (var i = 0; i < savedCount; i++)
             {
@@ -32,9 +29,6 @@ namespace RollingBall.Game.Score
         public void Save(IEnumerable<ScoreData> data)
         {
             var scores = data.ToList();
-            var skipCount = Math.Max(0, scores.Count() - MaxSavesNumber);
-            scores = scores.Skip(skipCount).ToList();
-            
             var scoresCount = scores.Count();
             PlayerPrefs.SetInt(CountKey, scoresCount);
 

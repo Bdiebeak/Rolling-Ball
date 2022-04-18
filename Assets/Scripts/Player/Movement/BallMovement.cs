@@ -17,9 +17,6 @@ namespace RollingBall.Player.Movement
         private Rigidbody _rigidbody;
         
         private Vector3 _targetHorizontalVelocity;
-        
-        private void OnValidate() => CacheRequiredComponents();
-        private void CacheRequiredComponents() => _rigidbody = GetComponent<Rigidbody>();
 
         private void Awake()
         {
@@ -28,7 +25,11 @@ namespace RollingBall.Player.Movement
         }
 
         private void InitializeCamera() => _cameraTransform = UnityEngine.Camera.main.transform;
-        private void InitializeRigidbody() => _rigidbody.drag = drag;
+        private void InitializeRigidbody()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.drag = drag;
+        }
 
         private void Update() => RecalculateTargetVelocity();
         private void RecalculateTargetVelocity()

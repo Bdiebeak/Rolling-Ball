@@ -4,9 +4,7 @@ using UnityEngine.UI;
 
 namespace RollingBall.UI
 {
-    /// <summary>
-    /// Something like Mediator for MainMenu.
-    /// </summary>
+    /// <summary> Something like Mediator for MainMenu. </summary>
     public class MainMenuUI : MonoBehaviour
     {
         [SerializeField] private Button startButton;

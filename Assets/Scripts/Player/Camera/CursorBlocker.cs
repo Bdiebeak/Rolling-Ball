@@ -19,14 +19,7 @@ namespace RollingBall.Player.Camera
             ChangeCursorVisibility(true);
         }
 
-        public void ChangeCursorBlockedState(bool newState)
-        {
-            Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-        }
-
-        public void ChangeCursorVisibility(bool newState)
-        {
-            Cursor.visible = newState;
-        }
+        public void ChangeCursorBlockedState(bool newState) => Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        public void ChangeCursorVisibility(bool newState) => Cursor.visible = newState;
     }
 }

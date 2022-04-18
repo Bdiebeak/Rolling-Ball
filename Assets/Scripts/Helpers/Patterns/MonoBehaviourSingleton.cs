@@ -2,11 +2,6 @@
 
 namespace RollingBall.Helpers.Patterns
 {
-    /// <summary>
-    /// This is a helper class which could be used for automatically configure a singleton class.
-    /// Inherit a class from this helper if you're creating a singleton.
-    /// </summary>
-    /// <typeparam name="T"> Singleton object's type. </typeparam>
     [DefaultExecutionOrder(-900)]
     public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviourSingleton<T>
     {

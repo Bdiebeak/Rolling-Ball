@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RollingBall.UI
 {
-    public class ScorePanel : CanvasGroupPanel
+    public class ScoreListPanel : CanvasGroupPanel
     {
         [Space]
         [SerializeField] private ScoreDataFiller highestScoreFiller;

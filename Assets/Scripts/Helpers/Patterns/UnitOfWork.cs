@@ -5,16 +5,14 @@ namespace RollingBall.Helpers
 {
     public class UnitOfWork : MonoBehaviourSingleton<UnitOfWork>
     {
-        private IScoreRepository _scoreRepository;
-
-        public IScoreRepository ScoreRepository => _scoreRepository;
+        public IScoreRepository ScoreRepository { get; private set; }
 
         public override void Awake()
         {
             base.Awake();
             
             var scoreDataProvider = new ScorePlayerPrefsProvider();
-            _scoreRepository = new ScoreRepository(scoreDataProvider);
+            ScoreRepository = new ScoreRepository(scoreDataProvider);
         }
     }
 }

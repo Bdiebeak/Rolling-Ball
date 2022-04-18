@@ -48,9 +48,6 @@ namespace RollingBall.Player.Movement
         }
 
         private void FixedUpdate() => UpdateVelocity();
-        private void UpdateVelocity()
-        {
-            _rigidbody.AddForce(_targetHorizontalVelocity, ForceMode.VelocityChange);
-        }
+        private void UpdateVelocity() => _rigidbody.AddForce(_targetHorizontalVelocity, ForceMode.VelocityChange);
     }
 }

@@ -5,16 +5,13 @@ namespace RollingBall.Game.Score
     [Serializable] 
     public struct ScoreData
     {
-        private float _score;
-        private DateTime _dateTime;
-
-        public float Score => _score;
-        public DateTime DateTime => _dateTime;
+        public float Score { get; private set; }
+        public DateTime DateTime { get; private set; }
 
         public ScoreData(float score, DateTime dateTime)
         {
-            _score = score;
-            _dateTime = dateTime;
+            Score = score;
+            DateTime = dateTime;
         }
     }
 }

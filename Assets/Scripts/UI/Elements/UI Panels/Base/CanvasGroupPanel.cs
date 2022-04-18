@@ -7,7 +7,7 @@ namespace RollingBall.UI
     [RequireComponent(typeof(CanvasGroup))]
     public class CanvasGroupPanel : MonoBehaviour
     {
-        [Tooltip("Should be assigned in Canvas which can be closed by button. Can be null.")]
+        [Tooltip("Should be assigned in Panel which can be closed by button. Can be null.")]
         [SerializeField] private Button closeButton;
         private CanvasGroup _canvasGroup;
 
